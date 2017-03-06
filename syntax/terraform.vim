@@ -716,12 +716,14 @@ syn region  terraComment      start="/\*" end="\*/" contains=@terraCommentGroup,
 syn region  terraComment      start="#" end="$" contains=@terraCommentGroup,@Spell
 syn region  terraComment      start="//" end="$" contains=@terraCommentGroup,@Spell
 
+""" resource
 syn match  terraResource        /\<resource\>/ nextgroup=terraResourceTypeStr skipwhite
 syn region terraResourceTypeStr start=/"/ end=/"/ contains=terraResourceTypeBI
                               \ nextgroup=terraResourceName skipwhite
 syn region terraResourceName    start=/"/ end=/"/
                               \ nextgroup=terraResourceBlock skipwhite
 
+""" data
 syn match  terraData        /\<data\>/ nextgroup=terraDataTypeStr skipwhite
 syn region terraDataTypeStr start=/"/ end=/"/ contains=terraDataTypeBI
                               \ nextgroup=terraDataName skipwhite
