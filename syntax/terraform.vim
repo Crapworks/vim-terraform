@@ -7,7 +7,7 @@ endif
 
 syn case match
 
-syn keyword terraSection connection output provider variable data terraform
+syn keyword terraSection connection output provider variable terraform
 syn keyword terraValueBool true false on off yes no
 
 """ functions
@@ -763,7 +763,7 @@ hi def link terraResourceTypeBI    Identifier
 hi def link terraResourceTypeStr   String
 hi def link terraData              Structure
 hi def link terraDataName          String
-hi def link terraDataTypeBI        Tag
+hi def link terraDataTypeBI        Identifier
 hi def link terraDataTypeStr       String
 hi def link terraSection           Structure
 hi def link terraStringInterp      String
