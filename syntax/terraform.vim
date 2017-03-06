@@ -10,6 +10,54 @@ syn case match
 syn keyword terraSection connection output provider variable data terraform
 syn keyword terraValueBool true false on off yes no
 
+""" functions
+syn keyword terraFunctionName
+            \ base64decode
+            \ base64encode
+            \ base64sha256
+            \ ceil
+            \ cidrhost
+            \ cidrnetmask
+            \ cidrsubnet
+            \ coalesce
+            \ compact
+            \ concat
+            \ distinct
+            \ element
+            \ file
+            \ floor
+            \ format
+            \ formatlist
+            \ index
+            \ join
+            \ jsonencode
+            \ keys
+            \ length
+            \ list
+            \ lookup
+            \ lower
+            \ map
+            \ max
+            \ md5
+            \ merge
+            \ min
+            \ pathexpand
+            \ replace
+            \ sha1
+            \ sha256
+            \ signum
+            \ slice
+            \ sort
+            \ split
+            \ timestamp
+            \ title
+            \ trimspace
+            \ upper
+            \ uuid
+            \ values
+            \ zipmap
+""" end functions
+
 """ data
 syn keyword terraDataTypeBI
           \ alicloud_images
@@ -700,10 +748,8 @@ syn match terraBraces        "[{}\[\]]"
 """ skip \" in strings.
 """ we may also want to pass \\" into a function to escape quotes.
 syn region terraValueString   start=/"/ skip=/\\\+"/ end=/"/ contains=terraStringInterp
-syn region terraStringInterp  matchgroup=terraBrackets start=/\${/ end=/}/ contains=terraFunction contained
+syn region terraStringInterp  matchgroup=terraBrackets start=/\${/ end=/}/ contains=terraFunctionName contained
 "" TODO match keywords here, not a-z+
-syn keyword terraFunction format element concat join
-"syn region terraValueFunction matchgroup=terraBrackets contains=terraFunction contained
 
 hi def link terraComment           Comment
 hi def link terraTodo              Todo
@@ -729,6 +775,6 @@ hi def link terraProvisioner       Structure
 hi def link terraProvisionerName   String
 hi def link terraModule            Structure
 hi def link terraModuleName        String
-hi def link terraFunction          Identifier
+hi def link terraFunctionName      Identifier
 
 let b:current_syntax = "terraform"
