@@ -700,26 +700,27 @@ syn match terraBraces        "[{}\[\]]"
 """ skip \" in strings.
 """ we may also want to pass \\" into a function to escape quotes.
 syn region terraValueString   start=/"/ skip=/\\\+"/ end=/"/ contains=terraStringInterp
-syn region terraStringInterp  matchgroup=terraBrackets start=/\${/ end=/}/ contains=terraValueFunction contained
+syn region terraStringInterp  matchgroup=terraBrackets start=/\${/ end=/}/ contains=terraFunction contained
 "" TODO match keywords here, not a-z+
-syn region terraValueFunction matchgroup=terraBrackets start=/[0-9a-z]\+(/ end=/)/ contains=terraValueString,terraValueFunction contained
+syn keyword terraFunction format element concat join
+"syn region terraValueFunction matchgroup=terraBrackets contains=terraFunction contained
 
 hi def link terraComment           Comment
 hi def link terraTodo              Todo
-hi def link terraBrackets          Operator
+hi def link terraBrackets          Identifier
 hi def link terraProvider          Structure
 hi def link terraBraces            Delimiter
 hi def link terraProviderName      String
 hi def link terraResource          Structure
 hi def link terraResourceName      String
-hi def link terraResourceTypeBI    Tag
+hi def link terraResourceTypeBI    Identifier
 hi def link terraResourceTypeStr   String
 hi def link terraData              Structure
 hi def link terraDataName          String
 hi def link terraDataTypeBI        Tag
 hi def link terraDataTypeStr       String
 hi def link terraSection           Structure
-hi def link terraStringInterp      Identifier
+hi def link terraStringInterp      String
 hi def link terraValueBool         Boolean
 hi def link terraValueDec          Number
 hi def link terraValueHexaDec      Number
@@ -728,6 +729,6 @@ hi def link terraProvisioner       Structure
 hi def link terraProvisionerName   String
 hi def link terraModule            Structure
 hi def link terraModuleName        String
-hi def link terraValueFunction     Identifier
+hi def link terraFunction          Identifier
 
 let b:current_syntax = "terraform"
